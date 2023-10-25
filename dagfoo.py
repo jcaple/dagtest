@@ -34,6 +34,9 @@ G.add_edges_from(
         (7,9),
         (7,10),
         (6,1)
+
+        # Another test case
+        # (0,1),(0,4),(4,5),(4,6),(5,6),(6,1),(0,2),(2,3),(1,2)
     ]
 )
 
@@ -45,9 +48,10 @@ G.add_edges_from(
 startNode = 1
 
 # The Vertex to end at
-endNode = 10
+endNode = 6
 
-paths = sorted(nx.all_simple_paths(G, source=startNode, target=endNode))
+paths = sorted(nx.all_simple_paths(G, source=startNode, target=endNode), key=len, reverse=True)
 longest = 0
 if (len(paths) > 0): longest = len(paths[0])
 print("Longest Path: ", longest)
+print(paths)
